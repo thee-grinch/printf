@@ -33,8 +33,7 @@ int print_string(va_list args)
 {
 	char *string = va_arg(args, char *);
 	int i;
-
-	if (string == NULL || *string == '\0')
+	if (*string == '\0')
 		return (0);
 	for (i = 0; string[i] != '\0'; i++)
 	{
