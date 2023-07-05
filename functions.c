@@ -1,5 +1,5 @@
 #include <unistd.h>
-
+#include <stdarg.h>
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
@@ -36,9 +36,9 @@ int print_string(va_list args)
 
 	if (string == NULL || *string == '\0')
 		return (0);
-	for (i = 0; s[i] != '\0'; i++)
+	for (i = 0; string[i] != '\0'; i++)
 	{
-		_putchar(s[i]);
+		_putchar(string[i]);
 	}
 	return (i);
 }
