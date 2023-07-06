@@ -5,7 +5,7 @@
  * @n: the digits to be counted
  * Return: the number of digits
  */
-int count_digits(int n)
+int count_digits(long int n)
 {
 	int count = 0;
 
@@ -20,7 +20,7 @@ int count_digits(int n)
  * print_number - prints a number
  * @n: the number to be printed
  */
-void print_number(int n)
+void print_number(long int n)
 {
 	if (n / 10)
 		print_number(n / 10);
