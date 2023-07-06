@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdarg.h>
+#include "main.h"
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
@@ -45,11 +46,34 @@ int print_string(va_list args)
 }
 /**
  * print_percent - prints a percentage sign
+ * @args:the argument list
  * Return: always
  */
-int print_percent(void)
+int print_percent(va_list args)
 {
+	(void)args;
+
 	_putchar('%');
 	return (1);
+}
+/**
+ * print_int - printa a number
+ * @args: the integer to be printed
+ * Return: count digits
+ */
+int print_int(va_list args)
+{
+	int number = va_arg(args, int);
+	int digits = 0;
+
+	if (number < 0)
+	{
+		_putchar('-');
+		digits++;
+		number = -number;
+	}
+	digits += count_digits(number);
+	print_number(number);
+	return (digits);
 }
 

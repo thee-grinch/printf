@@ -22,9 +22,13 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 's')
 				count += print_string(args);
 			else if (format[i + 1] == '%')
-				count += print_percent();
+				count += print_percent(args);
 			else if (format[i + 1] == '\0')
 				return (count);
+			else if (format[i + 1] == 'd')
+				count += print_int(args);
+			else if (format[i + 1] == 'i')
+				count += print_int(args);
 			i++;
 		}
 		else
