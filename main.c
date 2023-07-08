@@ -31,7 +31,7 @@ int main(void)
 	lenM = printf("%d\n", 0);
 	lenN = _printf("%d\n", 0);
 	printf("Print: %i Mine: %i\n", lenM, lenN);
-	lenO = printf("%b\n", 13);
+	lenO = _printf("%b\n", 13);
 	lenP = _printf("%b\n", 13);
 	printf("Print: %i Mine: %i\n", lenO, lenP);
 	return (0);

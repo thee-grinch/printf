@@ -27,66 +27,61 @@ void print_number(long int n)
 	_putchar(n % 10 + '0');
 }
 /**
- * array_reverse - reverses an array
- * @a: the array
- * @n: the size
- */
-void array_reverse(char *a, unsigned int size)
-{
-	unsigned int i, j;
-	char buffer;
-
-	j = size - 1;
-	for (i = 0; i < size / 2; i++)
-	{
-		buffer = a[i];
-		a[i] = a[j];
-		a[j] = buffer;
-		j--;
-	}
-}
-/**
  * convert_base - converts a number to different bases
  * @n: the numbe to be converted
  * @b: the base
  * Return: the converted number char pointer
  */
-char *convert_base(unsigned int n, unsigned int b)
+int convert_base(unsigned int n, unsigned int b, char *s)
 {
-	char *s = "0000000000000000000000000000000";
-	unsigned int i, rem;
-
-	while (n)
+	int index;
+	unsigned int rem;
+	
+	if (n == 0)
+	{
+		s[0] = '0';
+		return (1);
+	}
+	for (index = 0; n > 0; index++)
 	{
 		rem = n % b;
-		rem /= b;
-		s[i++] = rem + '0';
-	}
-	s[i] = '\0';
-	array_reverse(s, i);
-	return (s);
-}
-int print_binary(va_list args)
-{
-	unsigned int bin = va_arg(args, unsigned int);
-	int count;
-	char *s;
 
-	s = convert_base(bin, 2);
-	count = _puts(s);
-	return (count);
+		if (rem < 10)
+		{
+			s[index] = rem + '0';
+		}
+		else
+			s[index] = 'A' + (rem - 10);
+		n /= b;
+	}
+	return (index);
 }
 /**
- * _puts - acts as puts
- * @s: the string pointer
- * Return: the number of bytes printed
+ * print_converted - prints the converted number
+ * @s: the converted number string
+ * @size: the string size
  */
-int _puts(char *s)
+void print_converted(char *s, int size)
 {
 	int i;
-	for (i = 0; s[i] != '\0'; i++)
+
+	for (i = size - 1; i >= 0; i--)
 	{
 		_putchar(s[i]);
 	}
-	return (i);
+}
+/**
+ * print_binary - prints a string in binary
+ * @args: the argument
+ * Return: the number of bits
+ */
+int print_binary (va_list args)
+{
+	unsigned int binary = va_arg(args, unsigned int);
+	int count;
+	char s[32];
+	
+	count = convert_base(binary, 2, s);
+	print_converted(s, count);
+	return (count);
 }
