@@ -7,6 +7,7 @@
 int main(void)
 {
 	int lenA, lenB, lenC, lenD, lenE, lenF, lenG, lenH, lenI, lenJ, lenK, lenL, lenM, lenN;
+	int lenO, lenP;
 	char c = 'c';
 	char *str = "Mordecai Muvandi is redoing the tasks again";
 	lenA = printf("lets try to print a simple sentence\n");
@@ -29,6 +30,9 @@ int main(void)
 	printf("Printf: %i Mine: %i\n", lenK, lenL);
 	lenM = printf("%d\n", 0);
 	lenN = _printf("%d\n", 0);
-	printf("Printf: %i Mine: %i\n", lenM, lenN);
+	printf("Print: %i Mine: %i\n", lenM, lenN);
+	lenO = printf("%b\n", 13);
+	lenP = _printf("%b\n", 13);
+	printf("Print: %i Mine: %i\n", lenO, lenP);
 	return (0);
 }
