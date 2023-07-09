@@ -7,6 +7,8 @@
  */
 int _printf(const char *format, ...)
 {
+	char buffer[1024];
+	int j = 0;
 	int i, count = 0;
 	va_list args;
 
@@ -15,30 +17,20 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
+
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == 'c')
-				count += print_char(args);
-			else if (format[i + 1] == 's')
-				count += print_string(args);
-			else if (format[i + 1] == '%')
-				count += print_percent(args);
-			else if (format[i + 1] == '\0')
-				return (count);
-			else if (format[i + 1] == 'd')
-				count += print_int(args);
-			else if (format[i + 1] == 'i')
-				count += print_int(args);
-			else if (format[i + 1] == 'b')
-				count += print_binary(args);
 			i++;
+			count += print_buffer(buffer, j);
+			count += getfunc(format[i], args);
 		}
 		else
 		{
-			_putchar(format[i]);
-			count++;
+			buffer[j++] = format[i];
 		}
 	}
+	if (j != 0)
+		count += print_buffer(buffer, j);
 	va_end(args);
 	return (count);
 }

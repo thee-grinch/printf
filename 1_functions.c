@@ -30,13 +30,14 @@ void print_number(long int n)
  * convert_base - converts a number to different bases
  * @n: the numbe to be converted
  * @b: the base
+ * @s: the string to be printed
  * Return: the converted number char pointer
  */
 int convert_base(unsigned int n, unsigned int b, char *s)
 {
 	int index;
 	unsigned int rem;
-	
+
 	if (n == 0)
 	{
 		s[0] = '0';
@@ -75,12 +76,12 @@ void print_converted(char *s, int size)
  * @args: the argument
  * Return: the number of bits
  */
-int print_binary (va_list args)
+int print_binary(va_list args)
 {
 	unsigned int binary = va_arg(args, unsigned int);
 	int count;
 	char s[32];
-	
+
 	count = convert_base(binary, 2, s);
 	print_converted(s, count);
 	return (count);
